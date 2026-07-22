@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://SCHIMBA-CU-DOMENIUL-TAU/sitemap.xml
+Sitemap: https://danmorea.netlify.app/sitemap.xml
