@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "noutati"
+    label: "Noutăți"
+    files:
+      - file: "noutati.json"
+        label: "Lista de noutăți"
+        name: "noutati"
+        fields:
+          - label: "Noutăți"
+            name: "noutati"
+            widget: "list"
+            label_singular: "Noutate"
+            summary: "{{titlu}} — {{data}}"
+            fields:
+              - {label: "Titlu", name: "titlu", widget: "string"}
+              - {label: "Data", name: "data", widget: "date"}
+              - {label: "Text", name: "text", widget: "text"}

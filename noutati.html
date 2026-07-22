@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noutăți — Dan Morea</title>
+<meta name="description" content="Ultimele noutăți despre romanele lui Dan Morea — Pe urmele destinului și Ești un Înger.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">DAN <span>MOREA</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="pe-urmele-destinului.html">Pe urmele destinului</a></li>
+        <li><a href="esti-un-inger.html">Ești un Înger</a></li>
+        <li><a href="noutati.html" class="active">Noutăți</a></li>
+        <li><a href="pareri.html">Păreri despre carte</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-icons">
+      <a href="tel:0745035088">0745 035 088</a>
+      <a href="https://www.facebook.com/Dan-Morea-103458004781067/">Facebook</a>
+      <div class="search-wrap">
+        <button class="search-toggle" onclick="document.getElementById('search-box').classList.toggle('open'); document.getElementById('site-search-input').focus();">⚲ Căutare</button>
+        <div class="search-box" id="search-box">
+          <input type="text" id="site-search-input" placeholder="Caută pe site...">
+          <div class="search-results" id="site-search-results"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb"><a href="index.html">Acasă</a> / Noutăți</div>
+
+<section class="hero" style="padding:70px 32px 60px;">
+  <div class="wrap">
+    <div class="eyebrow">Noutăți</div>
+    <h1>Ce mai e nou</h1>
+    <p class="hero-quote">Vești despre cărți, lansări și tot ce mișcă în culise.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div id="noutati-list" class="news-list">
+      <p style="color:var(--parchment-dim); text-align:center;">Se încarcă noutățile...</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="tel:0745035088">0745 035 088</a>
+    <a href="https://www.facebook.com/Dan-Morea-103458004781067/">Facebook</a>
+    <a href="mailto:danutmorea@yahoo.com">danutmorea@yahoo.com</a>
+    <a href="https://danutmorea.blogspot.com/">Blog</a>
+  </div>
+  © Dan Morea · Toate poveștile pornesc de pe <a href="https://danutmorea.blogspot.com/">danutmorea.blogspot.com</a>
+</footer>
+
+<script src="site-scripts.js"></script>
+</body>
+</html>
