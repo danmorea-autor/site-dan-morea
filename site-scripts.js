@@ -124,6 +124,64 @@ document.addEventListener('DOMContentLoaded', function(){
   if(window.location.pathname.indexOf('esti-un-inger') !== -1) initContinutCarte('continut-carte2.json');
 });
 
+// --- Date generale (telefon, email, Facebook, poză autor) — pe toate paginile ---
+function initSiteGlobal(){
+  fetch('site-global.json').then(function(r){ return r.json(); }).then(function(d){
+    if(d.telefon_tel){
+      document.querySelectorAll('[data-site="tel"]').forEach(function(el){
+        el.setAttribute('href', 'tel:' + d.telefon_tel);
+      });
+    }
+    if(d.telefon){
+      document.querySelectorAll('.site-tel-text').forEach(function(el){ el.textContent = d.telefon; });
+    }
+    if(d.facebook){
+      document.querySelectorAll('[data-site="fb"]').forEach(function(el){ el.setAttribute('href', d.facebook); });
+    }
+    if(d.email){
+      document.querySelectorAll('[data-site="email"]').forEach(function(el){
+        el.setAttribute('href', 'mailto:' + d.email);
+        if(el.classList.contains('site-email-text')) el.textContent = d.email;
+      });
+    }
+    if(d.autor_foto){
+      document.querySelectorAll('[data-site="author-photo"]').forEach(function(el){ el.setAttribute('src', d.autor_foto); });
+    }
+  }).catch(function(){});
+}
+document.addEventListener('DOMContentLoaded', initSiteGlobal);
+
+// --- Galerie de fragmente (poză + citat), editabilă din panou ---
+function initFragmente(){
+  var list = document.getElementById('fragmente-list');
+  if(!list) return;
+  var file = list.getAttribute('data-file');
+  if(!file) return;
+  fetch(file).then(function(r){ return r.json(); }).then(function(d){
+    var items = (d && d.fragmente) ? d.fragmente : [];
+    if(items.length === 0){
+      list.innerHTML = '<p style="color:var(--parchment-dim); text-align:center; grid-column:1/-1;">Nu sunt fragmente momentan.</p>';
+      return;
+    }
+    list.innerHTML = '';
+    items.forEach(function(item){
+      var card = document.createElement('div');
+      var hasImg = item.imagine && item.imagine.trim() !== '';
+      card.className = 'fragment-card' + (hasImg ? ' wide' : '');
+      var textHtml = '<p>' + item.text + '</p><p class="fragment-note">— din carte</p>';
+      if(hasImg){
+        card.innerHTML = '<div class="fragment-inner"><img src="' + item.imagine + '" alt="Fragment din carte"><div class="fragment-body">' + textHtml + '</div></div>';
+      } else {
+        card.innerHTML = '<div class="fragment-body" style="padding-top:32px;">' + textHtml + '</div>';
+      }
+      list.appendChild(card);
+    });
+  }).catch(function(){
+    list.innerHTML = '<p style="color:var(--parchment-dim); text-align:center; grid-column:1/-1;">Fragmentele nu au putut fi încărcate.</p>';
+  });
+}
+document.addEventListener('DOMContentLoaded', initFragmente);
+
 // Google Translate injects an inline "top" offset on <html>/<body> to make room
 // for its own banner, which pushes our sticky header down/behind it. We watch
 // for that and force it back to 0 continuously, since our CSS alone can't
