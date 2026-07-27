@@ -6,6 +6,49 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
+  - name: "acasa"
+    label: "Pagina principală"
+    files:
+      - file: "continut-acasa.json"
+        label: "Texte pagina principală"
+        name: "acasa"
+        fields:
+          - {label: "Titlu principal (hero)", name: "hero_titlu", widget: "string"}
+          - {label: "Citat sub titlu", name: "hero_citat", widget: "string"}
+          - {label: "Rezumat carte 1 (Pe urmele destinului)", name: "carte1_rezumat", widget: "text"}
+          - {label: "Text buton Amazon (carte 1)", name: "carte1_buton_amazon_text", widget: "string"}
+          - {label: "Link Amazon (carte 1)", name: "carte1_buton_amazon_link", widget: "string"}
+          - {label: "Rezumat carte 2 (Ești un Înger)", name: "carte2_rezumat", widget: "text"}
+          - {label: "Despre autor - text 1", name: "despre_text1", widget: "text"}
+          - {label: "Despre autor - text 2", name: "despre_text2", widget: "text"}
+
+  - name: "carte1"
+    label: "Pe urmele destinului"
+    files:
+      - file: "continut-carte1.json"
+        label: "Texte carte 1"
+        name: "carte1"
+        fields:
+          - {label: "Tagline (fraza de sub titlu)", name: "tagline", widget: "string"}
+          - {label: "Descriere completă", name: "descriere", widget: "text"}
+          - {label: "Text buton Comandă", name: "buton_comanda_text", widget: "string"}
+          - {label: "Text buton Amazon", name: "buton_amazon_text", widget: "string"}
+          - {label: "Link Amazon", name: "buton_amazon_link", widget: "string"}
+
+  - name: "carte2"
+    label: "Ești un Înger"
+    files:
+      - file: "continut-carte2.json"
+        label: "Texte carte 2"
+        name: "carte2"
+        fields:
+          - {label: "Tagline (fraza de sub titlu)", name: "tagline", widget: "string"}
+          - {label: "Descriere completă", name: "descriere", widget: "text"}
+          - {label: "Text buton Comandă", name: "buton_comanda_text", widget: "string"}
+          - {label: "Are buton Amazon activ?", name: "buton_amazon_activ", widget: "boolean", default: false}
+          - {label: "Text buton Amazon", name: "buton_amazon_text", widget: "string", required: false}
+          - {label: "Link Amazon", name: "buton_amazon_link", widget: "string", required: false}
+
   - name: "noutati"
     label: "Noutăți"
     files:
