@@ -34,6 +34,18 @@ collections:
           - {label: "Text buton Comandă", name: "buton_comanda_text", widget: "string"}
           - {label: "Text buton Amazon", name: "buton_amazon_text", widget: "string"}
           - {label: "Link Amazon", name: "buton_amazon_link", widget: "string"}
+      - file: "fragmente-carte1.json"
+        label: "Galerie fragmente carte 1"
+        name: "fragmente1"
+        fields:
+          - label: "Fragmente"
+            name: "fragmente"
+            widget: "list"
+            label_singular: "Fragment"
+            summary: "{{fields.text}}"
+            fields:
+              - {label: "Poză (opțională)", name: "imagine", widget: "image", required: false}
+              - {label: "Text citat", name: "text", widget: "text"}
 
   - name: "carte2"
     label: "Ești un Înger"
@@ -48,6 +60,31 @@ collections:
           - {label: "Are buton Amazon activ?", name: "buton_amazon_activ", widget: "boolean", default: false}
           - {label: "Text buton Amazon", name: "buton_amazon_text", widget: "string", required: false}
           - {label: "Link Amazon", name: "buton_amazon_link", widget: "string", required: false}
+      - file: "fragmente-carte2.json"
+        label: "Galerie fragmente carte 2"
+        name: "fragmente2"
+        fields:
+          - label: "Fragmente"
+            name: "fragmente"
+            widget: "list"
+            label_singular: "Fragment"
+            summary: "{{fields.text}}"
+            fields:
+              - {label: "Poză (opțională)", name: "imagine", widget: "image", required: false}
+              - {label: "Text citat", name: "text", widget: "text"}
+
+  - name: "global"
+    label: "Contact & date generale"
+    files:
+      - file: "site-global.json"
+        label: "Telefon, email, Facebook, poză autor"
+        name: "global"
+        fields:
+          - {label: "Telefon (afișat, cu spații)", name: "telefon", widget: "string"}
+          - {label: "Telefon (pentru sunat, fără spații)", name: "telefon_tel", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Link Facebook", name: "facebook", widget: "string"}
+          - {label: "Poză autor", name: "autor_foto", widget: "image"}
 
   - name: "noutati"
     label: "Noutăți"
