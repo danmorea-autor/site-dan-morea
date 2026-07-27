@@ -70,6 +70,60 @@ function initNoutati(){
 }
 document.addEventListener('DOMContentLoaded', initNoutati);
 
+// --- Conținut editabil (texte, butoane, linkuri din panoul de administrare) ---
+function setText(id, value){
+  var el = document.getElementById(id);
+  if(el && value !== undefined && value !== null && value !== '') el.textContent = value;
+}
+function setLink(id, href, text){
+  var el = document.getElementById(id);
+  if(!el) return;
+  if(href) el.setAttribute('href', href);
+  if(text) el.textContent = text;
+}
+
+function initContinutAcasa(){
+  if(!document.getElementById('hero-titlu')) return;
+  fetch('continut-acasa.json').then(function(r){ return r.json(); }).then(function(d){
+    setText('hero-titlu', d.hero_titlu);
+    setText('hero-citat', d.hero_citat ? '„' + d.hero_citat + '”' : undefined);
+    setText('carte1-rezumat', d.carte1_rezumat);
+    setLink('carte1-amazon-btn', d.carte1_buton_amazon_link, d.carte1_buton_amazon_text ? '📖 ' + d.carte1_buton_amazon_text.replace(/^📖\s*/, '') : undefined);
+    setText('carte2-rezumat', d.carte2_rezumat);
+    setText('despre-text1', d.despre_text1);
+    setText('despre-text2', d.despre_text2);
+  }).catch(function(){});
+}
+
+function initContinutCarte(jsonFile){
+  if(!document.getElementById('carte-tagline') && !document.getElementById('carte-descriere')) return;
+  fetch(jsonFile).then(function(r){ return r.json(); }).then(function(d){
+    setText('carte-tagline', d.tagline);
+    setText('carte-descriere', d.descriere);
+    setLink('carte-buton-comanda', null, d.buton_comanda_text);
+    if(document.getElementById('carte-buton-amazon')){
+      setLink('carte-buton-amazon', d.buton_amazon_link, d.buton_amazon_text);
+    } else if(d.buton_amazon_activ && d.buton_amazon_link){
+      var row = document.getElementById('carte-cta-row');
+      if(row){
+        var a = document.createElement('a');
+        a.href = d.buton_amazon_link;
+        a.className = 'btn btn-ghost';
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = d.buton_amazon_text || 'Disponibilă pe Amazon';
+        row.appendChild(a);
+      }
+    }
+  }).catch(function(){});
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  initContinutAcasa();
+  if(window.location.pathname.indexOf('pe-urmele-destinului') !== -1) initContinutCarte('continut-carte1.json');
+  if(window.location.pathname.indexOf('esti-un-inger') !== -1) initContinutCarte('continut-carte2.json');
+});
+
 // Google Translate injects an inline "top" offset on <html>/<body> to make room
 // for its own banner, which pushes our sticky header down/behind it. We watch
 // for that and force it back to 0 continuously, since our CSS alone can't
