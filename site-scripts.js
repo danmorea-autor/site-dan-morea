@@ -141,6 +141,9 @@ function initSiteGlobal(){
     if(d.goodreads){
       document.querySelectorAll('[data-site="goodreads"]').forEach(function(el){ el.setAttribute('href', d.goodreads); });
     }
+    if(d.amazon_autor){
+      document.querySelectorAll('[data-site="amazon-autor"]').forEach(function(el){ el.setAttribute('href', d.amazon_autor); });
+    }
     if(d.email){
       document.querySelectorAll('[data-site="email"]').forEach(function(el){
         el.setAttribute('href', 'mailto:' + d.email);
