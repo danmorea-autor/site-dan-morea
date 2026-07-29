@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', initSiteSearch);
 function initNoutati(){
   var list = document.getElementById('noutati-list');
   if(!list) return;
-  fetch('noutati.json').then(function(r){ return r.json(); }).then(function(data){
+  var isEn = window.location.pathname.indexOf('/en/') !== -1;
+  fetch(isEn ? 'noutati-en.json' : 'noutati.json').then(function(r){ return r.json(); }).then(function(data){
     var items = (data && data.noutati) ? data.noutati.slice() : [];
     items.sort(function(a,b){ return new Date(b.data) - new Date(a.data); });
     if(items.length === 0){
@@ -84,7 +85,8 @@ function setLink(id, href, text){
 
 function initContinutAcasa(){
   if(!document.getElementById('hero-titlu')) return;
-  fetch('continut-acasa.json').then(function(r){ return r.json(); }).then(function(d){
+  var isEn = window.location.pathname.indexOf('/en/') !== -1;
+  fetch(isEn ? 'continut-acasa-en.json' : 'continut-acasa.json').then(function(r){ return r.json(); }).then(function(d){
     setText('hero-titlu', d.hero_titlu);
     setText('hero-citat', d.hero_citat ? '„' + d.hero_citat + '”' : undefined);
     setText('carte1-rezumat', d.carte1_rezumat);
@@ -122,6 +124,8 @@ document.addEventListener('DOMContentLoaded', function(){
   initContinutAcasa();
   if(window.location.pathname.indexOf('pe-urmele-destinului') !== -1) initContinutCarte('continut-carte1.json');
   if(window.location.pathname.indexOf('esti-un-inger') !== -1) initContinutCarte('continut-carte2.json');
+  if(window.location.pathname.indexOf('follow-your-destiny') !== -1) initContinutCarte('continut-carte1-en.json');
+  if(window.location.pathname.indexOf('you-are-an-angel') !== -1) initContinutCarte('continut-carte2-en.json');
 });
 
 // --- Date generale (telefon, email, Facebook, poză autor) — pe toate paginile ---
