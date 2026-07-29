@@ -138,6 +138,9 @@ function initSiteGlobal(){
     if(d.facebook){
       document.querySelectorAll('[data-site="fb"]').forEach(function(el){ el.setAttribute('href', d.facebook); });
     }
+    if(d.goodreads){
+      document.querySelectorAll('[data-site="goodreads"]').forEach(function(el){ el.setAttribute('href', d.goodreads); });
+    }
     if(d.email){
       document.querySelectorAll('[data-site="email"]').forEach(function(el){
         el.setAttribute('href', 'mailto:' + d.email);
