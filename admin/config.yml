@@ -104,3 +104,87 @@ collections:
               - {label: "Titlu", name: "titlu", widget: "string"}
               - {label: "Data", name: "data", widget: "date"}
               - {label: "Text", name: "text", widget: "text"}
+
+  - name: "acasa_en"
+    label: "🇬🇧 Homepage (English)"
+    files:
+      - file: "en/continut-acasa-en.json"
+        label: "Homepage text"
+        name: "acasa_en"
+        fields:
+          - {label: "Hero title", name: "hero_titlu", widget: "string"}
+          - {label: "Quote under title", name: "hero_citat", widget: "string"}
+          - {label: "Book 1 summary (Follow Your Destiny)", name: "carte1_rezumat", widget: "text"}
+          - {label: "Amazon button text (book 1)", name: "carte1_buton_amazon_text", widget: "string"}
+          - {label: "Amazon link (book 1)", name: "carte1_buton_amazon_link", widget: "string"}
+          - {label: "Book 2 summary (You Are an Angel)", name: "carte2_rezumat", widget: "text"}
+          - {label: "About the author - text 1", name: "despre_text1", widget: "text"}
+          - {label: "About the author - text 2", name: "despre_text2", widget: "text"}
+
+  - name: "carte1_en"
+    label: "🇬🇧 Follow Your Destiny (English)"
+    files:
+      - file: "en/continut-carte1-en.json"
+        label: "Book 1 text"
+        name: "carte1_en"
+        fields:
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Full description", name: "descriere", widget: "text"}
+          - {label: "Order button text", name: "buton_comanda_text", widget: "string"}
+          - {label: "Amazon button text", name: "buton_amazon_text", widget: "string"}
+          - {label: "Amazon link", name: "buton_amazon_link", widget: "string"}
+      - file: "en/fragmente-carte1-en.json"
+        label: "Excerpt gallery, book 1"
+        name: "fragmente1_en"
+        fields:
+          - label: "Excerpts"
+            name: "fragmente"
+            widget: "list"
+            label_singular: "Excerpt"
+            summary: "{{fields.text}}"
+            fields:
+              - {label: "Image (optional)", name: "imagine", widget: "image", required: false}
+              - {label: "Quote text", name: "text", widget: "text"}
+
+  - name: "carte2_en"
+    label: "🇬🇧 You Are an Angel (English)"
+    files:
+      - file: "en/continut-carte2-en.json"
+        label: "Book 2 text"
+        name: "carte2_en"
+        fields:
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Full description", name: "descriere", widget: "text"}
+          - {label: "Order button text", name: "buton_comanda_text", widget: "string"}
+          - {label: "Amazon button active?", name: "buton_amazon_activ", widget: "boolean", default: false}
+          - {label: "Amazon button text", name: "buton_amazon_text", widget: "string", required: false}
+          - {label: "Amazon link", name: "buton_amazon_link", widget: "string", required: false}
+      - file: "en/fragmente-carte2-en.json"
+        label: "Excerpt gallery, book 2"
+        name: "fragmente2_en"
+        fields:
+          - label: "Excerpts"
+            name: "fragmente"
+            widget: "list"
+            label_singular: "Excerpt"
+            summary: "{{fields.text}}"
+            fields:
+              - {label: "Image (optional)", name: "imagine", widget: "image", required: false}
+              - {label: "Quote text", name: "text", widget: "text"}
+
+  - name: "noutati_en"
+    label: "🇬🇧 News (English)"
+    files:
+      - file: "en/noutati-en.json"
+        label: "News list"
+        name: "noutati_en"
+        fields:
+          - label: "News"
+            name: "noutati"
+            widget: "list"
+            label_singular: "News item"
+            summary: "{{titlu}} — {{data}}"
+            fields:
+              - {label: "Title", name: "titlu", widget: "string"}
+              - {label: "Date", name: "data", widget: "date"}
+              - {label: "Text", name: "text", widget: "text"}
